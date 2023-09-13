@@ -1,0 +1,48 @@
+.forms {
+  display: block;
+  width: 400px;
+  height: max-content;
+  padding-top: 10px;
+padding-bottom: 40px;
+
+}
+
+.forms > * {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.forms input {
+  width: 90%;
+  height: 35px;
+  font-size: 20px;
+}
+
+.inputBox{
+    padding-left: 5px;
+}
+
+.forms button {
+  width: 90%;
+  border: 1px solid black;
+  border-radius: 4px;
+  height: 38px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.google{
+    background-color:lightblue;
+}
+
+.forms p{
+    font-size: 18px;
+margin-left: -10px;
+    text-align: center;
+}
+
+.forms a{
+    color: blueviolet;
+    text-decoration: none;
+}
