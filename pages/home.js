@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import SingleBook from "@/components/singleBook";
 import { useRouter } from "next/router";
-import styles from "/styles/home.module.css";
+import styles from "@/styles/home.module.css";
 import LoadingComponent from "@/components/loadingComponent";
 import Navbar from "@/components/nav";
 

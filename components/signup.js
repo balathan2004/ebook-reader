@@ -1,4 +1,4 @@
-import styles from "/styles/forms.module.css";
+import styles from "@/styles/forms.module.css";
 import SendData from "./sendFunction";
 import { useRouter } from "next/router";
 import React, { Component, useState } from "react";
