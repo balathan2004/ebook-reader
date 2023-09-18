@@ -1,0 +1,84 @@
+.box {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background-color: rgb(173, 173, 203);
+}
+
+.side {
+  width: 12vh;
+  height: 100vh;
+  text-align: center;
+  background-color: skyblue;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.header {
+  padding-top: 20px;
+  height: 10%;
+  width: 100%;
+  background-color: lightblue;
+}
+
+.brand {
+  object-fit: cover;
+  object-position: center;
+  color: #606a94;
+  aspect-ratio: 1/1;
+  height: 50px;
+  width: 50px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.icon_container {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.icon_container a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  height: 20%;
+  width: 100%;
+  color: rgb(70, 69, 69);
+}
+
+.icon_container:hover+ .target{
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.7s linear;
+    
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  background-color: red;
+}
+
+.target{
+    position: absolute;
+    height: 100vh;
+    width: 25vh;
+    left: 10vh;
+    background-color: white;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.target .side{
+width: 100%;
+background-color: wheat;
+}
+
+.brand_img{
+    height: 80%;
+}
+
+

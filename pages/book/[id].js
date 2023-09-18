@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import styles from "/styles/home.module.css";
+import Navbar from "@/components/nav";
 import {
   StartSpeech,
   StopSpeech,
@@ -14,9 +15,10 @@ export default function Page() {
   const router = useRouter();
 
   const [pageNum, setPageNum] = useState(1);
-  const [isContentLoading, setContentLoading] = useState(false);
+  const [loader, setLoader] = useState(true);
   const [pageData, setPageData] = useState(null);
   const [VoiceNum, setVoiceNum] = useState(0);
+
   const { id } = router.query;
 
   function setPages(value) {
@@ -53,17 +55,18 @@ export default function Page() {
         console.log(err);
       }
     }
-    setContentLoading(false);
+    setLoader(false);
   }
 
   function NextPage() {
+    setLoader(true);
     setPageNum(pageNum + 1);
     setPages(pageNum + 1);
-    setContentLoading(true);
   }
 
   function gotoPage() {
     var newPageNum = prompt("Enter Page Number");
+    setLoader(true);
     setPages(parseInt(newPageNum));
   }
 
@@ -76,6 +79,7 @@ export default function Page() {
 
   useEffect(() => {
     getPagesnum();
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -84,10 +88,14 @@ export default function Page() {
 
   return (
     <div className="home-container">
+      <Navbar />
       <div className={styles.text_book}>
-        {isContentLoading ? <LoadingComponent /> : null}
-        <h1>{id}</h1>
-        <p>
+        {loader ? <LoadingComponent /> : null}
+        <div className={styles.contentDetails}>
+          <h1>{id}</h1>
+          <span>Current Page {pageNum}</span>
+        </div>
+        <p className={styles.para}>
           {pageData == ""
             ? "Current Page is Empty ! Swipe To Next Page"
             : pageData}

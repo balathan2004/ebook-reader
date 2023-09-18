@@ -1,4 +1,5 @@
 const pdfjs = require("pdfjs-dist");
+const mammoth = require("mammoth");
 import { storage } from "./config";
 import { ref, getDownloadURL } from "firebase/storage";
 export default async function GetSingleBookData(bookname, pageNum, userid) {

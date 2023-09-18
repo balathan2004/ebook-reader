@@ -1,147 +1,133 @@
-img{
-    width: 100px;
-    height: 100px;
+img {
+  width: 100px;
+  height: 100px;
 }
 
-*{
-    padding: 0;
-    margin: 0;
-    font-family: sans-serif;
-    
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-.app{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.home-container{
-    position: relative;
-    min-height: 100vh;
-    width: 100vw;
-    background-color: aliceblue;
+.home-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: aliceblue;
 }
 
-@keyframes spin{
-    0% { transform: rotate(0deg);}
-    100% { transform: rotate(360deg);}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.loader{
-    border: 16px solid lightgray;
-    border-top: 16px solid blue;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top: 30%;
-    z-index: 1;
-    left: 40%;
-    animation:spin 1s linear infinite;
+.loader {
+  border: 16px solid lightgray;
+  border-top: 16px solid blue;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 30%;
+  z-index: 1;
+  left: 40%;
+  animation: spin 1s linear infinite;
 }
-
-
 
 .nav {
-    height: 80px;
-    background-color: skyblue;
-    display: flex;
-    justify-content: space-between;
+  height: 80px;
+  background-color: skyblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.nav .brand {
+  line-height: 40px;
+  margin-left: 1rem;
+  font-size: 25px;
+  font-weight: 700;
+  color: white;
+}
+
+.nav ul {
+  float: right;
+  line-height: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav li > a {
+  text-decoration: none;
+  color: black;
+  text-transform: capitalize;
+  text-align: center;
+  margin-right: 10px;
+  border: 1px solid gray;
+  padding: 10px 10px;
+  background-color: lightblue;
+  width: 100%;
+}
+
+.nav input,
+.nav label {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .nav {
+    background-color: rgb(40, 142, 183);
+
     align-items: center;
-    position: relative;
   }
-  
-  .nav .brand {
-    line-height: 40px;
-    margin-left: 1rem;
-    font-size: 25px;
-    font-weight: 700;
-    color: white;
+
+  .nav label {
+    display: block;
   }
-  
   .nav ul {
-  
-    float: right;
-    line-height: 40px;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
+    display: none;
   }
-  
-  .nav li>a {
-    text-decoration: none;
-    color: black;
-    text-transform: capitalize;
-    text-align: center;
-    margin-right: 10px;
-    border: 1px solid gray;
-    padding: 10px 10px;
-    background-color: lightblue;
+
+  .uls li {
+    display: block;
+    background-color: rgb(116, 168, 220);
+    position: relative;
     width: 100%;
   }
-  
-  .nav input,.nav label{
-   display: none;
+
+  li > a {
+    display: block;
+    padding: 0px;
   }
 
-
-  
-  
-  
-  
-  
-  @media (max-width:700px){
-      .nav{
-          background-color: red;
-     
-          align-items: center;
-      }
-
-      
-
-      .nav label{
-          display: block;
-      }
-      .nav ul{
-          display: none;
-          
-      }
-
-      .uls li{
-        display: block;
-      background-color: red ;
-      position: relative;
-        width: 100%;
-      }
-
-      li>a{
-        display: block;
-        padding: 0px;
-      }
- 
-
-      .nav label{
-        margin-right: 100px;
-      }
- 
-      .input:checked ~  .uls{
-        display: block;
-        height: max-content;
-        min-width: 100vw;
-        position: absolute;
-        line-height: 30px;
-        top: 80px;
-        margin: 0;
-       
-        left:0;
-  
-
-    }
-  
+  .nav label {
+    margin-right: 10vw;
   }
 
-
-
+  .input:checked ~ .uls {
+    display: block;
+    height: max-content;
+    min-width: 100vw;
+    position: absolute;
+    line-height: 30px;
+    top: 80px;
+    margin: 0;
+    left: 0;
+  }
+}
