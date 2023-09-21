@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import React, { Component, useEffect } from "react";
-import styles from "../styles/home.module.css";
+import styles from "../styles/Home.module.css";
 
 import SendData from "./sendFunction";
 

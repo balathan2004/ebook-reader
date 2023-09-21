@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
-import styles from "@/styles/home.module.css";
+import styles from "@/styles/Home.module.css";
 import Navbar from "@/components/nav";
 import {
   StartSpeech,
