@@ -1,4 +1,4 @@
-import styles from "@/styles/forms.module.css";
+import styles from "../styles/forms.module.css";
 import React, { Component, useState } from "react";
 import SendData from "./sendFunction";
 

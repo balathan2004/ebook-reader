@@ -1,4 +1,4 @@
-import styles from "/styles/slide.module.css";
+import styles from "@/styles/slide.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
