@@ -6,7 +6,7 @@ import { getCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import Login from "@/components/login";
 import SignUp from "@/components/signup";
-import styles from "@/styles/Index.module.css";
+import styles from "@/styles/index.module.css";
 import ErrorComponent from "@/components/error";
 import LoadingComponent from "@/components/loadingComponent";
 
