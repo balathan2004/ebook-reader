@@ -3,6 +3,7 @@ import { ref, listAll } from "firebase/storage";
 
 export default async (req, res) => {
   var { EBookUserId } = req.cookies;
+  console.log(EBookUserId);
 
   var exists = ref(storage, `/books`);
   var news = (await listAll(exists)).prefixes;

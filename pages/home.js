@@ -26,12 +26,10 @@ export default function Home() {
         setTimeout(() => {
           navigate.push("/upload-book");
         }, 3000);
-        return;
       }
     } catch (e) {
       console.log(e);
       navigate.push("/upload-book");
-      return;
     }
   });
 
