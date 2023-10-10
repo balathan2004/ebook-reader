@@ -29,7 +29,7 @@ export default function Home() {
       }
     } catch (e) {
       console.log(e);
-      navigate.push("/upload-book");
+      window.location.href = "/home";
     }
   });
 

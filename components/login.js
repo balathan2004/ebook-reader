@@ -14,7 +14,8 @@ export default function Login({ func, navigator, ErrorChanger }) {
       var res = await SendData(data, "login");
       if (res.message == "success") {
         alert(res.message);
-        navigator.push("/home");
+
+        window.location.href = "/home";
       } else {
         ErrorChanger(res.error);
       }

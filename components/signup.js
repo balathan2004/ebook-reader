@@ -13,7 +13,7 @@ export default function SignUp({ navigator, ErrorChanger }) {
 
       var res = await SendData(data, "signup");
       if (res.message == "success") {
-        navigator.push("/home");
+        window.location.href = "/home";
       } else {
         ErrorChanger(res.error);
       }

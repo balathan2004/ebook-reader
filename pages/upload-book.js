@@ -25,7 +25,7 @@ export default function UploadBook() {
     if (response.message == "success") {
       setTimeout(() => {
         setRedirectMessage("File Uploaded Success Redirecting");
-        navi.push("/home");
+        window.location.href = "/home";
       }, 3000);
     }
   }
