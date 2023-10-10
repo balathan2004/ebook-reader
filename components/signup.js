@@ -1,4 +1,4 @@
-import styles from "../styles/Forms.module.css";
+import styles from "../styles/forms.module.css";
 import SendData from "./sendFunction";
 import { PopupMethods } from "./popUp";
 import React, { Component, useState } from "react";

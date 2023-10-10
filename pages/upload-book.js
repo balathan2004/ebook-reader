@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import styles from "@/styles/Upload.module.css";
+import styles from "@/styles/upload.module.css";
 import Navbar from "@/components/nav";
 import { useRouter } from "next/router";
 export default function UploadBook() {
