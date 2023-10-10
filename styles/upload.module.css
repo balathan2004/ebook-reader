@@ -5,16 +5,13 @@
 .card {
   border-radius: 10px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
-  max-width: 50vw;
-margin: auto;
-margin-top: 10vh;
-display: block;
+  width:  500px;
   height: 360px;
   background-color: rgb(220, 225, 226);
   padding: 10px 30px 40px;
   border: 1px solid black;
+  text-align: center;
   position: relative;
-
 }
 
 .card h3 {
@@ -27,9 +24,9 @@ display: block;
   margin: 10px 0;
   padding: 30px;
  min-height: 80%;
+ width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
   border: 3px dotted #a3a3a3;
   border-radius: 5px;
@@ -46,6 +43,11 @@ display: block;
   margin-bottom: 20px;
   font-size: 12px;
   color: #a3a3a3;
+}
+
+.drop_box input{
+  display: block;
+  margin: auto;
 }
 
 .btn {
@@ -79,10 +81,10 @@ display: block;
 
 @media (max-width: 700px) {
     .card{
-        min-width: 90vw;
-        max-width: 90vw;
-        margin-top: 30vh;
+        width: 90%;
+        margin-top: 3vh;
     }
+   
 }
 
 @media(max-width:1200px){

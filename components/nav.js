@@ -4,7 +4,9 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 export default function Navbar() {
   return (
     <div className="nav">
-      <a className="brand">EReader</a>
+      <a className="brand" href="/">
+        EReader
+      </a>
       <nav>
         <label htmlFor="checker">
           <FontAwesomeIcon icon={faBars} size="2x" />
@@ -24,7 +26,7 @@ export default function Navbar() {
           </li>
           <li>
             {" "}
-            <a href="#">about</a>
+            <a href="/about">about</a>
           </li>
         </ul>
       </nav>

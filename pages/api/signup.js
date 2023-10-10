@@ -8,21 +8,27 @@ export default async (req, res) => {
   var uid = "";
   var name = "";
   var { username, password } = JSON.parse(req.body);
-  await createUserWithEmailAndPassword(auth, username, password).then(
-    (userCred) => {
-      console.log(userCred);
-      name = userCred.user.email;
-      uid = userCred.user.uid;
-      resData.push(userCred);
-    }
-  );
-  setCookie("EBookUserId", uid, {
-    req,
-    res,
-    maxAge: new Date(Date.now() + 900000),
-    httpOnly: false,
-  });
-  var data = { username: name, uid: uid };
-  await setDoc(doc(firestore, "users", uid), data);
-  res.json({ message: "success" });
+  try {
+    await createUserWithEmailAndPassword(auth, username, password).then(
+      (userCred) => {
+        console.log(userCred);
+        name = userCred.user.email;
+        uid = userCred.user.uid;
+        resData.push(userCred);
+      }
+    );
+    setCookie("EBookUserId", uid, {
+      req,
+      res,
+      maxAge: new Date(Date.now() + 900000),
+      httpOnly: false,
+      sameSite: "none",
+      secure: "true",
+    });
+    var data = { username: name, uid: uid };
+    await setDoc(doc(firestore, "users", uid), data);
+    res.json({ message: "success" });
+  } catch (e) {
+    res.json({ error: e.code });
+  }
 };

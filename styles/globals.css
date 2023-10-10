@@ -17,13 +17,25 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .home-container {
   position: relative;
   min-height: 100vh;
+  height: max-content;
   width: 100vw;
+
   background-color: aliceblue;
+}
+.uploader-container{
+height: 100%;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+
 }
 
 @keyframes spin {
@@ -55,6 +67,7 @@ img {
   justify-content: space-between;
   align-items: center;
   position: relative;
+  z-index: 1;
 }
 
 .nav .brand {
@@ -63,6 +76,7 @@ img {
   font-size: 25px;
   font-weight: 700;
   color: white;
+  text-decoration: none;
 }
 
 .nav ul {
@@ -129,5 +143,8 @@ img {
     top: 80px;
     margin: 0;
     left: 0;
-  }
+  } 
+  
 }
+
+

@@ -1,6 +1,6 @@
 .forms {
   display: block;
-  width: 400px;
+  width: 100%;
   height: max-content;
   padding-top: 10px;
 padding-bottom: 40px;
@@ -15,8 +15,16 @@ padding-bottom: 40px;
 
 .forms input {
   width: 90%;
-  height: 35px;
+  height: 40px;
   font-size: 20px;
+  
+}
+
+
+.forms input:focus{
+  outline: none; /* Remove the default focus outline */
+  border-color: #4CAF50; /* Change the border color on focus */
+  background-color: #f0f0f0;
 }
 
 .inputBox{

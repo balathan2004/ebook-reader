@@ -22,7 +22,7 @@ export default async (req, res) => {
     });
     res.json({ message: bookNames });
   } else {
-    res.json({ message: "No Books" });
+    res.status(200).send({ error: "Not Found" });
   }
 
   /*

@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import styles from "@/styles/upload.module.css";
+import styles from "@/styles/Upload.module.css";
 import Navbar from "@/components/nav";
 import { useRouter } from "next/router";
 export default function UploadBook() {
@@ -31,26 +31,27 @@ export default function UploadBook() {
   }
 
   return (
-    <div className="app" style={{ backgroundColor: "rgb(181, 203, 211)" }}>
+    <div className="app">
       <div className="home-container">
         <Navbar />
-        <div className={styles.card}>
-          <h2>{redirectMessage ? redirectMessage : ""}</h2>
-          <h3>Upload Files</h3>
-          <div className={styles.drop_box}>
-            <header>
-              <h4>Select File here</h4>
-            </header>
-            <p>Files Supported: PDF, TEXT</p>
-            <input
-              type="file"
-              onChange={handleFile}
-              accept=".txt,.pdf, "
-            ></input>
-
-            <button className={styles.btn} onClick={submit}>
-              Save
-            </button>
+        <div className="uploader-container">
+          <div className={styles.card}>
+            <h2>{redirectMessage ? redirectMessage : ""}</h2>
+            <h3>Upload Files</h3>
+            <div className={styles.drop_box}>
+              <header>
+                <h4>Select File here</h4>
+              </header>
+              <p>Files Supported: PDF, TEXT</p>
+              <input
+                type="file"
+                onChange={handleFile}
+                accept=".txt,.pdf, "
+              ></input>
+              <button className={styles.btn} onClick={submit}>
+                Save
+              </button>
+            </div>
           </div>
         </div>
       </div>

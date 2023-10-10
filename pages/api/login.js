@@ -1,19 +1,27 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { setCookie } from "cookies-next";
+import { firebase } from "@/components/config";
+
 export default async (req, res) => {
-  const auth = getAuth();
+  const auth = getAuth(firebase);
   var uid = "";
   var { username, password } = JSON.parse(req.body);
-  await signInWithEmailAndPassword(auth, username, password).then(
-    (userCred) => {
-      uid = userCred.user.uid;
-    }
-  );
-  setCookie("EBookUserId", uid, {
-    req,
-    res,
-    maxAge: new Date(Date.now() + 900000),
-    httpOnly: false,
-  });
-  res.json({ message: "success" });
+  try {
+    await signInWithEmailAndPassword(auth, username, password).then(
+      (userCred) => {
+        uid = userCred.user.uid;
+      }
+    );
+    setCookie("EBookUserId", uid, {
+      req,
+      res,
+      maxAge: new Date(Date.now() + 900000),
+      httpOnly: false,
+      sameSite: "None",
+      secure: "true",
+    });
+    res.json({ message: "success" });
+  } catch (e) {
+    res.json({ error: e.code });
+  }
 };
