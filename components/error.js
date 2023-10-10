@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
-import styles from "/styles/Index.module.css";
+import styles from "../styles/Index.module.css";
 export default function ErrorComponent({ ErrorState, StateChanger }) {
   function changeState() {
     StateChanger(!ErrorState);
