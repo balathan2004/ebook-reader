@@ -9,9 +9,6 @@ export default function About() {
 
   useEffect(() => {
     setId(getCookie("EBookUserId"));
-    setTimeout(() => {
-      alert(document.cookie);
-    }, 2000);
   });
 
   return (

@@ -19,8 +19,8 @@ export default function Home() {
   const [loader, setLoader] = useState(true);
   async function checkCookie() {
     if (getCookie("EBookUserId")) {
-      window.location.href = "/home";
       setTimeout(() => {
+        navigate.push("/home");
         setLoader(!loader);
       }, 100);
     } else {

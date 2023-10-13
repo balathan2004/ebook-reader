@@ -3,7 +3,7 @@ import styles from "@/styles/upload.module.css";
 import Navbar from "@/components/nav";
 import { useRouter } from "next/router";
 export default function UploadBook() {
-  const navi = useRouter();
+  const navigate = useRouter();
   const [files, setFiles] = useState({ file: [] });
   const page = useState();
   const [redirectMessage, setRedirectMessage] = useState();
@@ -25,7 +25,7 @@ export default function UploadBook() {
     if (response.message == "success") {
       setTimeout(() => {
         setRedirectMessage("File Uploaded Success Redirecting");
-        window.location.href = "/home";
+        navigate.push("/home");
       }, 3000);
     }
   }

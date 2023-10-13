@@ -22,14 +22,16 @@ export default function Home() {
         resolve(returnValue.message);
       } else {
         reject("New Error");
-        setError("no File found , Navigating to Upload_files");
+
         setTimeout(() => {
           navigate.push("/upload-book");
         }, 3000);
       }
     } catch (e) {
-      console.log(e);
-      window.location.href = "/home";
+      setTimeout(() => {
+        setError("no File found , Navigating to Upload_files");
+        navigate.push("/upload-book");
+      }, 3000);
     }
   });
 

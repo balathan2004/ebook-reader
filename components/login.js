@@ -13,9 +13,9 @@ export default function Login({ func, navigator, ErrorChanger }) {
       var data = JSON.stringify({ username: username, password: password });
       var res = await SendData(data, "login");
       if (res.message == "success") {
-        alert(res.message);
-
-        window.location.href = "/home";
+        setTimeout(() => {
+          navigator.push("/home");
+        }, 1000);
       } else {
         ErrorChanger(res.error);
       }
