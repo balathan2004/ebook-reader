@@ -1,4 +1,4 @@
-import { storage } from "@/components/config";
+import { storage } from "@/config";
 import { ref, listAll } from "firebase/storage";
 
 export default async (req, res) => {

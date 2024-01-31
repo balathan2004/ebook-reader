@@ -1,7 +1,7 @@
 var pdfjs = require("pdfjs-dist");
 pdfjs.GlobalWorkerOptions.workerSrc =
   "unpkg.com/pdfjs-dist@${pdfjs.2.5.2}/build/pdf.worker.min.js";
-import { storage } from "./config";
+import { storage } from "../config";
 import { ref, getDownloadURL } from "firebase/storage";
 export default async function GetSingleBookData(bookname, pageNum, userid) {
   const file = ref(storage, `/books/${userid}/${bookname}`);

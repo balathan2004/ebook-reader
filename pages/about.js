@@ -1,6 +1,6 @@
 import Navbar from "@/components/nav";
 import { getCookie } from "cookies-next";
-import { firebase } from "@/components/config";
+import { firebase } from "@/config";
 import { signInWithPopup, GoogleAuthProvider, getAuth } from "firebase/auth";
 import React, { Component, useState, useEffect } from "react";
 
