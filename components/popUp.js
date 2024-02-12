@@ -1,9 +1,9 @@
 import { signInWithPopup, getAuth, GoogleAuthProvider } from "firebase/auth";
 import SendData from "./sendFunction";
-import { app } from "../config";
+import { firebase } from "./config";
 export async function PopupMethods() {
   const provider = new GoogleAuthProvider();
-  const auth = getAuth(app);
+  const auth = getAuth(firebase);
 
   try {
     await signInWithPopup(auth, provider).then(async (x) => {
