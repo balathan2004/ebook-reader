@@ -1,19 +1,13 @@
-import GetSingleBookData from "@/components/singleBookData";
-
+import GetSingleBookData from "@/components/readFilePdf";
+import { storage } from "@/components/config";
+import { ref, getDownloadURL } from "firebase/storage";
 export default async (req, res) => {
-  var { EBookUserId } = req.cookies;
+  const { EBookUserId } = req.cookies;
   const { url, pageNum } = JSON.parse(req.body);
+  const file = ref(storage, `/books/${EBookUserId}/${url}`);
+  var urlpath = await getDownloadURL(file);
+  console.log(urlpath);
+  var accVal = await GetSingleBookData(url, pageNum, EBookUserId);
 
-  var data = new Promise(async (resolve, reject) => {
-    var newData = await GetSingleBookData(url, pageNum, EBookUserId);
-    if (newData) {
-      resolve(newData);
-    } else {
-      console.log("Error");
-    }
-  });
-
-  data.then((accVal) => {
-    res.json({ page: accVal.pageData, totalPages: accVal.totalPage });
-  });
+  res.json({ page: accVal.pageData, totalPages: accVal.totalPage });
 };
