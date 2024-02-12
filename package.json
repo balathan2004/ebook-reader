@@ -16,7 +16,7 @@
     "@ironsoftware/ironpdf": "^2024.1.1",
     "@ironsoftware/ironpdf-engine-windows-x64": "^2024.1.1",
     "cookies-next": "^3.0.0",
-    "firebase": "^10.3.0",
+    "firebase": "^10.7.1",
     "formidable": "^3.5.1",
     "fs": "^0.0.1-security",
     "gtts": "^0.2.1",

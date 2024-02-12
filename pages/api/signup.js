@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { firestore } from "@/components/config";
+import { firestore } from "@/config";
 import { setDoc, doc } from "firebase/firestore";
 import { setCookie } from "cookies-next";
 export default async (req, res) => {
