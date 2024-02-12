@@ -1,12 +1,12 @@
-var pdfjs = require("pdfjs-dist");
+import { getDocument } from "pdfjs-dist";
 
-import { storage } from "../config";
+import { storage } from "./config";
 import { ref, getDownloadURL } from "firebase/storage";
 export default async function GetSingleBookData(bookname, pageNum, userid) {
   const file = ref(storage, `/books/${userid}/${bookname}`);
   var urlpath = await getDownloadURL(file);
 
-  const values = pdfjs.getDocument(urlpath).promise.then(async (pdfDoc) => {
+  const values = getDocument(urlpath).promise.then(async (pdfDoc) => {
     const page = await pdfDoc.getPage(pageNum);
     const totalPage = pdfDoc.numPages;
 
