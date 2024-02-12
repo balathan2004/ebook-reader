@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 var pdfjs = require("pdfjs-dist");
-pdfjs.GlobalWorkerOptions.workerSrc =
-  "unpkg.com/pdfjs-dist@${pdfjs.2.5.2}/build/pdf.worker.min.js";
+
 import { storage } from "../config";
 import { ref, getDownloadURL } from "firebase/storage";
 export default async function GetSingleBookData(bookname, pageNum, userid) {
@@ -23,4 +20,3 @@ export default async function GetSingleBookData(bookname, pageNum, userid) {
   });
   return values;
 }
->>>>>>> f09daa89897764d7e4dbffa5d427019ca60c9135

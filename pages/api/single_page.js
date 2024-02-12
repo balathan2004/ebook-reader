@@ -1,4 +1,4 @@
-import GetSingleBookData from "@/components/readFilePdf";
+import GetSingleBookData from "@/components/singleBookData";
 import { storage } from "@/components/config";
 import { ref, getDownloadURL } from "firebase/storage";
 export default async (req, res) => {
