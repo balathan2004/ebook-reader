@@ -23,14 +23,11 @@ export default function Home() {
       } else {
         reject("New Error");
 
-        setTimeout(() => {
-          navigate.push("/upload-book");
-        }, 3000);
+        setTimeout(() => {}, 3000);
       }
     } catch (e) {
       setTimeout(() => {
         setError("no File found , Navigating to Upload_files");
-        navigate.push("/upload-book");
       }, 3000);
     }
   });
