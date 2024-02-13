@@ -1,5 +1,5 @@
 import { setDoc, doc, getDoc } from "firebase/firestore";
-import { firestore } from "@/config";
+import { firestore } from "@/components/config";
 import { setCookie } from "cookies-next";
 
 export default async (req, res) => {

@@ -1,5 +1,5 @@
 import { ref, uploadBytesResumable } from "firebase/storage";
-import { storage } from "../config";
+import { storage } from "./config";
 
 export default async function uploadFile(file, filename, userId) {
   const storageRef = ref(storage, `books/${userId}/${filename}`);

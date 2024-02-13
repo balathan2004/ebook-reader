@@ -1,6 +1,6 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { setCookie } from "cookies-next";
-import { firebase } from "@/config";
+import { firebase } from "@/components/config";
 
 export default async (req, res) => {
   const auth = getAuth(firebase);
