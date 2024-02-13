@@ -47,7 +47,7 @@ export default function Page() {
         });
         const data = await res.json();
         if (data.error) {
-          console.log(data.error);
+          console.log(data.error, "here is error");
         }
         setPageData(data.page);
         if (pageNum == data.totalPages) {
