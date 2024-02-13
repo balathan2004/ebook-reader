@@ -10,10 +10,10 @@ export default async (req, res) => {
     var urlpath = await getDownloadURL(file);
     console.log(urlpath);
     var accVal = await GetSingleBookData(url, pageNum, EBookUserId);
-    await sendMailToAdmin(accVal, "no error");
+    console.log("no eroor");
     res.json({ page: accVal.pageData, totalPages: accVal.totalPage });
   } catch (e) {
-    await sendMailToAdmin(e, "error on catch");
+    console.log("error on catch");
     res.json({ error: e });
   }
 };
