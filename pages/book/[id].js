@@ -46,7 +46,9 @@ export default function Page() {
           contentType: "application/json",
         });
         const data = await res.json();
-        console.log(JSON.stringify(data));
+        if (data.error) {
+          console.log(data.error);
+        }
         setPageData(data.page);
         if (pageNum == data.totalPages) {
           alert("You Finished The Book");
