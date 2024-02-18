@@ -20,10 +20,7 @@ export default function Navbar() {
           <li>
             <a href="/home">home</a>
           </li>
-          <li>
-            {" "}
-            <a href="#">Continue Reading</a>
-          </li>
+
           <li>
             {" "}
             <a href="/about">about</a>

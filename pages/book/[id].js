@@ -49,6 +49,7 @@ export default function Page() {
         if (data.error) {
           console.log(data.error, "here is error");
         }
+        console.log(data.page);
         setPageData(data.page);
         if (pageNum == data.totalPages) {
           alert("You Finished The Book");
