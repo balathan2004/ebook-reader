@@ -19,6 +19,7 @@ export default function Home({ data }) {
   return (
     <div className="home-container">
       <Navbar />
+
       <ErrorComponent ErrorState={error}></ErrorComponent>
 
       <div className={styles.container}>
@@ -44,7 +45,12 @@ export async function getServerSideProps(context) {
     }
   });
 
-  const response = await fetch(`http:localhost:3000/api/book-data?id=${uid}`, {
+  const apiUrl =
+    process.env.NODE_ENV === "production"
+      ? `https://nextjs-read.vercel.app/api/book-data?id=${uid}`
+      : `http:localhost:3000/api/book-data?id=${uid}`;
+
+  const response = await fetch(apiUrl, {
     method: "GET",
     contentType: "application/json",
   });

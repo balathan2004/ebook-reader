@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import styles from "@/styles/Home.module.css";
 import Navbar from "@/components/nav";
+import Notify from "@/components/notify";
 import {
   StartSpeech,
   StopSpeech,
@@ -18,6 +19,7 @@ export default function Page() {
   const [loader, setLoader] = useState(true);
   const [pageData, setPageData] = useState(null);
   const [VoiceNum, setVoiceNum] = useState(0);
+  const [notification, setNotification] = useState(null);
   const [totalPage, setTotalPage] = useState(null);
 
   const { id } = router.query;
@@ -66,6 +68,7 @@ export default function Page() {
   }
 
   function NextPage() {
+    setNotification("Moving to next page");
     setLoader(true);
     setPageNum(pageNum + 1);
     setPages(pageNum + 1);
@@ -78,6 +81,7 @@ export default function Page() {
   }
 
   function ChangeVoice() {
+    setNotification("voice changed");
     StartOver();
     var value = VoiceNum;
     setVoiceNum(VoiceNum + 1);
@@ -96,6 +100,7 @@ export default function Page() {
   return (
     <div className="home-container">
       <Navbar />
+      <Notify message={notification} messageFunction={setNotification} />
       <div className={styles.text_book}>
         {loader ? <LoadingComponent /> : null}
         <div className={styles.contentDetails}>
