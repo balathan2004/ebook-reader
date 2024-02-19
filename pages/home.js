@@ -3,14 +3,69 @@ import SingleBook from "@/components/singleBook";
 import { useRouter } from "next/router";
 import ErrorComponent from "@/components/error";
 import styles from "@/styles/Home.module.css";
-import LoadingComponent from "@/components/loadingComponent";
 import Navbar from "@/components/nav";
 
-export default function Home() {
-  var navigate = useRouter();
-  const [error, setError] = useState(false);
-  const [book, setBook] = useState([]);
-  const [loader, setLoader] = useState(true);
+export default function Home({ data }) {
+  const navigator = useRouter();
+  const error = data.error ? data.error : "";
+  const book = data.message ? data.message : [];
+
+  if (error) {
+    setTimeout(() => {
+      navigator.push("upload-book");
+    }, 5000);
+  }
+
+  return (
+    <div className="home-container">
+      <Navbar />
+      <ErrorComponent ErrorState={error}></ErrorComponent>
+
+      <div className={styles.container}>
+        {book.length > 0
+          ? book.map((x, index) => {
+              return <SingleBook data={x} key={index} bookName={book} />;
+            })
+          : null}
+      </div>
+    </div>
+  );
+}
+
+export async function getServerSideProps(context) {
+  const cookies = context.req.headers.cookie;
+
+  var cookieArray = cookies.split(";");
+  let uid = null;
+  cookieArray.map((single_cookie) => {
+    var [key, value] = single_cookie.trim().split("=");
+    if (key == "EBookUserId") {
+      uid = value;
+    }
+  });
+
+  const response = await fetch(`http:localhost:3000/api/book-data?id=${uid}`, {
+    method: "GET",
+    contentType: "application/json",
+  });
+  const responseJson = await response.json();
+
+  return {
+    props: {
+      data: responseJson,
+    },
+  };
+}
+
+/**\
+ * 
+ * 
+ * 
+ 
+
+
+///
+
 
   const data = new Promise(async (resolve, reject) => {
     try {
@@ -22,8 +77,6 @@ export default function Home() {
         resolve(returnValue.message);
       } else {
         reject("New Error");
-
-        setTimeout(() => {}, 3000);
       }
     } catch (e) {
       setTimeout(() => {
@@ -41,27 +94,5 @@ export default function Home() {
     getData();
   }, []);
 
-  return (
-    <div className="home-container">
-      <Navbar />
-      <ErrorComponent ErrorState={error} StateChanger={setError}>
-        {" "}
-      </ErrorComponent>
-      {loader ? <LoadingComponent /> : ""}
-      <div className={styles.container}>
-        {book.length == 0
-          ? null
-          : book.map((x, index) => {
-              return (
-                <SingleBook
-                  data={x}
-                  key={index}
-                  bookName={book}
-                  bookFunction={setBook}
-                />
-              );
-            })}
-      </div>
-    </div>
-  );
-}
+
+ */

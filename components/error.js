@@ -3,11 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/index.module.css";
 export default function ErrorComponent({ ErrorState, StateChanger }) {
+  const [error, setError] = useState(ErrorState);
+
   function changeState() {
-    StateChanger(!ErrorState);
+    setError(null);
   }
 
-  if (ErrorState) {
+  if (error) {
     return (
       <div className={styles.error_container}>
         <div className={styles.error_inner_container}>

@@ -18,18 +18,20 @@ export default function Page() {
   const [loader, setLoader] = useState(true);
   const [pageData, setPageData] = useState(null);
   const [VoiceNum, setVoiceNum] = useState(0);
+  const [totalPage, setTotalPage] = useState(null);
 
   const { id } = router.query;
 
   function setPages(value) {
-    localStorage.setItem("pageNum", value);
+    localStorage.setItem(id, value);
   }
   function getPagesnum() {
-    var LocalPageNum = localStorage.getItem("pageNum");
+    var LocalPageNum = localStorage.getItem(id);
+    console.log(LocalPageNum);
     if (LocalPageNum) {
       setPageNum(parseInt(LocalPageNum));
     } else {
-      localStorage.setItem("pageNum", 1);
+      localStorage.setItem(id, 1);
     }
   }
 
@@ -48,11 +50,13 @@ export default function Page() {
         const data = await res.json();
         if (data.error) {
           console.log(data.error, "here is error");
-        }
-        console.log(data.page);
-        setPageData(data.page);
-        if (pageNum == data.totalPages) {
-          alert("You Finished The Book");
+        } else {
+          console.log(data);
+          setPageData(data.page);
+          setTotalPage(data.totalPages);
+          if (pageNum == data.totalPages) {
+            alert("You Finished The Book");
+          }
         }
       } catch (err) {
         console.log(err);
@@ -87,7 +91,7 @@ export default function Page() {
 
   useEffect(() => {
     fetchData();
-  }, [id, pageNum]);
+  }, [pageNum]);
 
   return (
     <div className="home-container">
@@ -96,10 +100,12 @@ export default function Page() {
         {loader ? <LoadingComponent /> : null}
         <div className={styles.contentDetails}>
           <h1>{id}</h1>
-          <span>Current Page {pageNum}</span>
+          <span>
+            Current Page {pageNum}/{totalPage}
+          </span>
         </div>
         <p className={styles.para}>
-          {pageData == ""
+          {pageData == null
             ? "Current Page is Empty ! Swipe To Next Page"
             : pageData}
         </p>
