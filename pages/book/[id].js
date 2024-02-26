@@ -99,7 +99,6 @@ export default function Page() {
 
   return (
     <div className="home-container">
-      <Navbar />
       <Notify message={notification} messageFunction={setNotification} />
       <div className={styles.text_book}>
         {loader ? <LoadingComponent /> : null}

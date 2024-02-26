@@ -31,27 +31,24 @@ export default function UploadBook() {
   }
 
   return (
-    <div className="app">
-      <div className="home-container">
-        <Navbar />
-        <div className="uploader-container">
-          <div className={styles.card}>
-            <h2>{redirectMessage ? redirectMessage : ""}</h2>
-            <h3>Upload Files</h3>
-            <div className={styles.drop_box}>
-              <header>
-                <h4>Select File here</h4>
-              </header>
-              <p>Files Supported: PDF, TEXT</p>
-              <input
-                type="file"
-                onChange={handleFile}
-                accept=".txt,.pdf, "
-              ></input>
-              <button className={styles.btn} onClick={submit}>
-                Save
-              </button>
-            </div>
+    <div className="home-container">
+      <div className="uploader-container">
+        <div className={styles.card}>
+          <h2>{redirectMessage ? redirectMessage : ""}</h2>
+          <h3>Upload Files</h3>
+          <div className={styles.drop_box}>
+            <header>
+              <h4>Select File here</h4>
+            </header>
+            <p>Files Supported: PDF, TEXT</p>
+            <input
+              type="file"
+              onChange={handleFile}
+              accept=".txt,.pdf, "
+            ></input>
+            <button className={styles.btn} onClick={submit}>
+              Save
+            </button>
           </div>
         </div>
       </div>
