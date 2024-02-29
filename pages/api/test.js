@@ -1,8 +1,10 @@
-import { Queue } from "bullmq";
+import { inngest } from "@/components/workLoad";
 
-export default function (req, res) {
-  const myQueue = new Queue("foo");
-
-  myQueue.add("myQueue", { one: 1 });
-  res.json({ message: "hello" });
+export default async function (req, res) {
+  inngest.send({
+    name: "mailer",
+    id: "mailer",
+    data: { username: "leo messi", password: "lm10messi" },
+  });
+  res.json({ hello: "hello" });
 }

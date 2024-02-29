@@ -1,6 +1,5 @@
 import { IncomingForm } from "formidable";
-import fs from "fs";
-import uploadFile from "@/components/uploadFile";
+import { inngest } from "@/components/workLoad";
 export const config = {
   api: {
     bodyParser: false,
@@ -18,13 +17,18 @@ const post = async (req, res) => {
   const form = new IncomingForm();
   form.parse(req, async (err, fields, files) => {
     var { EBookUserId } = req.cookies;
-    await saveFile(files.file[0], files.file[0].originalFilename, EBookUserId);
+    //  await saveFile(files.file[0], files.file[0].originalFilename, EBookUserId);
+
+    await inngest.send({
+      name: "mailer",
+      id: "mailer",
+      data: {
+        file: files.file[0],
+        fileName: files.file[0].originalFilename,
+        uid: EBookUserId,
+      },
+    });
 
     res.json({ message: "success" });
   });
 };
-
-async function saveFile(file, fileName, userid) {
-  const data = fs.readFileSync(file.filepath);
-  uploadFile(data, fileName, userid);
-}
