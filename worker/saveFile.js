@@ -17,5 +17,6 @@ export const helloWorld = inngest.createFunction(
 
 async function saveFile(file, fileName, userid) {
   const data = fs.readFileSync(file.filepath);
-  uploadFile(data, fileName, userid);
+  const pdfUrl = await uploadFile(data, fileName, userid);
+  console.log(pdfUrl);
 }

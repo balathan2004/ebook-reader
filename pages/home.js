@@ -7,7 +7,7 @@ import styles from "@/styles/Home.module.css";
 export default function Home({ data }) {
   const navigator = useRouter();
   const error = data.error ? data.error : "";
-  const book = data.message ? data.message : [];
+  const [books, setBooks] = useState(data.message ? data.message : []);
 
   if (error) {
     setTimeout(() => {
@@ -20,9 +20,16 @@ export default function Home({ data }) {
       <ErrorComponent ErrorState={error}></ErrorComponent>
 
       <div className={styles.container}>
-        {book.length > 0
-          ? book.map((x, index) => {
-              return <SingleBook data={x} key={index} bookName={book} />;
+        {books.length > 0
+          ? books.map((x, index) => {
+              return (
+                <SingleBook
+                  data={x}
+                  key={index}
+                  bookName={books}
+                  bookFunction={setBooks}
+                />
+              );
             })
           : null}
       </div>
