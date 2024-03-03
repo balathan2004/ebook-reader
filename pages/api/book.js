@@ -17,11 +17,10 @@ const post = async (req, res) => {
   const form = new IncomingForm();
   form.parse(req, async (err, fields, files) => {
     var { EBookUserId } = req.cookies;
-    //  await saveFile(files.file[0], files.file[0].originalFilename, EBookUserId);
 
     await inngest.send({
-      name: "mailer",
-      id: "mailer",
+      name: "book-Upload",
+
       data: {
         file: files.file[0],
         fileName: files.file[0].originalFilename,

@@ -11,7 +11,7 @@ export default function Home({ data }) {
 
   if (error) {
     setTimeout(() => {
-      navigator.push("upload-book");
+      navigator.push("/upload-book");
     }, 5000);
   }
 
@@ -38,71 +38,39 @@ export default function Home({ data }) {
 }
 
 export async function getServerSideProps(context) {
-  const cookies = context.req.headers.cookie;
+  try {
+    const cookies = context.req.headers.cookie;
 
-  var cookieArray = cookies.split(";");
-  let uid = null;
-  cookieArray.map((single_cookie) => {
-    var [key, value] = single_cookie.trim().split("=");
-    if (key == "EBookUserId") {
-      uid = value;
-    }
-  });
-
-  const apiUrl =
-    process.env.NODE_ENV === "production"
-      ? `https://nextjs-read.vercel.app/api/book-data?id=${uid}`
-      : `http:localhost:3000/api/book-data?id=${uid}`;
-
-  const response = await fetch(apiUrl, {
-    method: "GET",
-    contentType: "application/json",
-  });
-  const responseJson = await response.json();
-
-  return {
-    props: {
-      data: responseJson,
-    },
-  };
-}
-
-/**\
- * 
- * 
- * 
- 
-
-
-///
-
-
-  const data = new Promise(async (resolve, reject) => {
-    try {
-      var res = await fetch("api/book-data", {
-        method: "GET",
-      });
-      var returnValue = await res.json();
-      if (returnValue.message) {
-        resolve(returnValue.message);
-      } else {
-        reject("New Error");
+    var cookieArray = cookies.split(";");
+    let uid = null;
+    cookieArray.map((single_cookie) => {
+      var [key, value] = single_cookie.trim().split("=");
+      if (key == "EBookUserId") {
+        uid = value;
       }
-    } catch (e) {
-      setTimeout(() => {
-        setError("no File found , Navigating to Upload_files");
-      }, 3000);
-    }
-  });
+    });
 
-  async function getData() {
-    setBook(await data);
-    setLoader(!loader);
+    const apiUrl =
+      process.env.NODE_ENV === "production"
+        ? `https://nextjs-read.vercel.app/api/book-data?id=${uid}`
+        : `http:localhost:3000/api/book-data?id=${uid}`;
+
+    const response = await fetch(apiUrl, {
+      method: "GET",
+      contentType: "application/json",
+    });
+    const responseJson = await response.json();
+
+    return {
+      props: {
+        data: responseJson,
+      },
+    };
+  } catch (err) {
+    return {
+      props: {
+        data: { error: "static props error" },
+      },
+    };
   }
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-
- */
+}

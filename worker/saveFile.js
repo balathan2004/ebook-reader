@@ -3,12 +3,12 @@ import fs from "fs";
 import uploadFile from "@/components/uploadFile";
 
 export const helloWorld = inngest.createFunction(
-  { id: "mailer", name: "mailer" },
+  { id: "book-Upload", name: "book-Upload" },
 
-  { event: "mailer" },
+  { event: "book-Upload" },
   async ({ event }) => {
+    console.log(event);
     const { file, fileName, uid } = event.data;
-    console.log(file, uid, fileName);
     await saveFile(file, fileName, uid);
 
     return { event, body: "Mail sent" };
