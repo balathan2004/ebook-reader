@@ -8,9 +8,9 @@ export default function App({ Component, pageProps }) {
   const isRootRoute = navigate.pathname === "/";
 
   return (
-    <>
+    <div className="home-container">
       {!isRootRoute && <Navbar />}
       <Component {...pageProps} />
-    </>
+    </div>
   );
 }

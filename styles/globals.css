@@ -159,6 +159,7 @@ overflow: hidden;
     top: 80px;
     margin: 0;
     left: 0;
+    z-index: 10;
   } 
   
 }

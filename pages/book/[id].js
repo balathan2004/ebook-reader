@@ -93,7 +93,7 @@ export default function Page() {
   }, [pageNum]);
 
   return (
-    <div className="home-container">
+    <>
       <Notify message={notification} messageFunction={setNotification} />
       <div className={styles.text_book}>
         {loader ? <LoadingComponent /> : null}
@@ -120,6 +120,6 @@ export default function Page() {
           <button onClick={gotoPage}>Select Page</button>
         </div>
       </div>
-    </div>
+    </>
   );
 }

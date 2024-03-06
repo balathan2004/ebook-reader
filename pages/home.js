@@ -3,6 +3,7 @@ import SingleBook from "@/components/singleBook";
 import { useRouter } from "next/router";
 import ErrorComponent from "@/components/error";
 import styles from "@/styles/Home.module.css";
+import Navbar from "@/components/nav";
 
 export default function Home({ data }) {
   const navigator = useRouter();
@@ -16,7 +17,7 @@ export default function Home({ data }) {
   }
 
   return (
-    <div className="home-container">
+    <>
       <ErrorComponent ErrorState={error}></ErrorComponent>
 
       <div className={styles.container}>
@@ -33,7 +34,7 @@ export default function Home({ data }) {
             })
           : null}
       </div>
-    </div>
+    </>
   );
 }
 

@@ -23,7 +23,7 @@ export default function About() {
  */
 
   return (
-    <div className="home-container">
+    <>
       <div class="about">
         <div class="about-app">
           <h1>About PDF to Voice Converter</h1>
@@ -138,6 +138,6 @@ export default function About() {
           </p>
         </div>
       </div>
-    </div>
+    </>
   );
 }

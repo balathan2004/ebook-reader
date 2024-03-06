@@ -31,7 +31,7 @@ export default function UploadBook() {
   }
 
   return (
-    <div className="home-container">
+    <>
       <div className="uploader-container">
         <div className={styles.card}>
           <h2>{redirectMessage ? redirectMessage : ""}</h2>
@@ -52,6 +52,6 @@ export default function UploadBook() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
