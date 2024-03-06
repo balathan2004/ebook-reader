@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "solo":"next dev",
     "dev": "concurrently \"npx inngest-cli@latest dev\" \"next dev\"",
-
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -28,6 +28,7 @@
     "mammoth": "^1.6.0",
     "mime-types": "^2.1.35",
     "next": "13.4.19",
+    "node-ebook-converter": "^1.0.11",
     "nodemailer": "^6.9.9",
     "pdf-parse": "^1.1.1",
     "pdf2json": "^3.0.5",

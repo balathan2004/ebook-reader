@@ -1,18 +1,17 @@
-import GetSingleBookData from "@/components/singleBookData";
 import { storage } from "@/components/config";
 import { ref, getDownloadURL } from "firebase/storage";
 export default async (req, res) => {
+  console.log("requested");
   try {
     const { EBookUserId } = req.cookies;
     const { url, pageNum } = JSON.parse(req.body);
     const file = ref(storage, `/books/${EBookUserId}/${url}`);
     var urlpath = await getDownloadURL(file);
-    console.log(urlpath);
-    var accVal = await GetSingleBookData(url, pageNum, EBookUserId);
-    console.log(accVal);
+    var accVal = await fetch(urlpath, { contentType: "application/json" });
+    var bookData = await accVal.json();
     res.json({
-      page: accVal.pageData,
-      totalPages: accVal.totalPage,
+      page: bookData.pageData.data[pageNum],
+      totalPages: bookData.totalPage,
     });
   } catch (e) {
     res.json({ error: e });

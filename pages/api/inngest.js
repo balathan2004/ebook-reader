@@ -1,6 +1,7 @@
 import { inngest } from "@/components/workLoad";
 import { serve } from "inngest/next";
 import { helloWorld } from "@/worker/saveFile";
+import { bookToData } from "@/worker/bookToData";
 
 /** 
 await inngest.send({
@@ -12,5 +13,5 @@ await inngest.send({
 */
 export default serve({
   client: inngest,
-  functions: [helloWorld],
+  functions: [helloWorld, bookToData],
 });

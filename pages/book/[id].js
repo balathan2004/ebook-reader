@@ -89,11 +89,6 @@ export default function Page() {
   }
 
   useEffect(() => {
-    getPagesnum();
-    fetchData();
-  }, []);
-
-  useEffect(() => {
     fetchData();
   }, [pageNum]);
 

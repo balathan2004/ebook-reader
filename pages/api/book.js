@@ -18,7 +18,7 @@ const post = async (req, res) => {
   form.parse(req, async (err, fields, files) => {
     var { EBookUserId } = req.cookies;
 
-    await inngest.send({
+    inngest.send({
       name: "book-Upload",
 
       data: {

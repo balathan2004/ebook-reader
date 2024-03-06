@@ -26,7 +26,7 @@ export default function UploadBook() {
       setTimeout(() => {
         setRedirectMessage("File Uploaded Success Redirecting");
         navigate.push("/home");
-      }, 3000);
+      }, 5000);
     }
   }
 
