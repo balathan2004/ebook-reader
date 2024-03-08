@@ -22,6 +22,7 @@ export default function UploadBook() {
       body: formdata,
     });
     var response = await res.json();
+    console.log(response);
     if (response.message == "success") {
       setTimeout(() => {
         setRedirectMessage("File Uploaded Success Redirecting");
