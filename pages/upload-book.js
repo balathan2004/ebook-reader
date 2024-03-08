@@ -18,7 +18,7 @@ export default function UploadBook() {
     formdata.append("file", files);
     const res = await fetch("/api/book", {
       method: "POST",
-      contentType: "multipart/form-data",
+      contentType: "application/pdf",
       body: formdata,
     });
     var response = await res.json();
@@ -41,11 +41,7 @@ export default function UploadBook() {
               <h4>Select File here</h4>
             </header>
             <p>Files Supported: PDF, TEXT</p>
-            <input
-              type="file"
-              onChange={handleFile}
-              accept=".txt,.pdf, "
-            ></input>
+            <input type="file" onChange={handleFile}></input>
             <button className={styles.btn} onClick={submit}>
               Save
             </button>

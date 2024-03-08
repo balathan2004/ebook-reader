@@ -1,6 +1,7 @@
 import { getDocument } from "pdfjs-dist";
 
 export default async function GetSingleBookData(url) {
+  console.log(url);
   const values = getDocument(url).promise.then(async (pdfDoc) => {
     let textArray = { data: [] };
     const totalPage = pdfDoc.numPages;
