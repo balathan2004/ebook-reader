@@ -28,13 +28,14 @@ const post = async (req, res) => {
       };
 
       const fileBuffer = fs.readFileSync(files.file[0].filepath);
+      const uint8Array = new Uint8Array(fileBuffer);
 
-      var url = await uploadFile(fileBuffer, fileData.fileName, fileData.uid);
+      // var url = await uploadFile(fileBuffer, fileData.fileName, fileData.uid);
 
-      fileData.url = url;
+      // fileData.url = url;
       res.json({ message: "success" });
 
-      convertFile(fileData.url, fileData.fileName, fileData.uid);
+      convertFile(uint8Array, fileData.fileName, fileData.uid);
     });
   } catch (err) {
     res.json({ error: err.message });
