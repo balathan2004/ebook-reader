@@ -1,8 +1,15 @@
-import { getDocument } from "pdfjs-dist";
+import * as pdfjs from "pdfjs-dist/legacy/build/pdf";
+const fs = require("fs");
+const dir = "node_modules/pdfjs-dist/es5/build/pdf.js";
+const content = fs.readFileSync(dir, { encoding: "utf-8" });
+fs.writeFileSync(
+  dir,
+  content.replace('"./pdf.worker.js";', `__dirname + "/pdf.worker.js";`)
+);
 
 export default async function GetSingleBookData(url) {
   console.log(url);
-  const values = getDocument(url).promise.then(async (pdfDoc) => {
+  const values = pdfjs.getDocument(url).promise.then(async (pdfDoc) => {
     let textArray = { data: [] };
     const totalPage = pdfDoc.numPages;
 
