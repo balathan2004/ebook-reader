@@ -1,5 +1,5 @@
-const pdfJs = await import("pdfjs-dist");
 export default async function GetSingleBookData(url) {
+  const pdfJs = await import("pdfjs-dist");
   console.log(url);
   const values = pdfJs.getDocument(url).promise.then(async (pdfDoc) => {
     let textArray = { data: [] };
