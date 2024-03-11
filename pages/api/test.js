@@ -1,4 +1,4 @@
-import { inngest } from "@/components/workLoad";
+import { inngest } from "@/workLoad";
 
 export default async function (req, res) {
   inngest.send({

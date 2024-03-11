@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "solo":"next dev",
-    "dev": "concurrently \"npx inngest-cli@latest dev\" \"next dev\"",
+    "dev":"next dev",
+    "solo": "concurrently \"npx inngest-cli@latest dev\" \"next dev\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
