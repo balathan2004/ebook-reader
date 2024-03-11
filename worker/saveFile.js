@@ -1,5 +1,5 @@
 import { inngest } from "@/components/workLoad";
-import GetSingleBookData from "@/components/singleBookData";
+import GetSingleBookData from "@/build";
 import fs from "fs";
 import uploadFile from "@/components/uploadFile";
 const ebookConverter = require("node-ebook-converter");

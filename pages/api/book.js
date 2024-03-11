@@ -1,7 +1,7 @@
 import { IncomingForm } from "formidable";
 //import { inngest } from "@/workLoad";
 import uploadFile from "@/components/uploadFile";
-import GetSingleBookData from "@/components/singleBookData";
+import GetSingleBookData from "@/build";
 const fs = require("fs");
 export const config = {
   api: {

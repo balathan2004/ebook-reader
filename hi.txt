@@ -1,6 +1,0 @@
-    "dev": "concurrently \"npx inngest-cli@latest dev\" \"next dev\"",
-
-
-
-    const key =
-  "signkey-prod-c717335e7f8093ad78e6b7c724b215743d64cb043a1c82426895d7aaa5f35388";
