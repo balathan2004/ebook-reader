@@ -1,8 +1,7 @@
 import { IncomingForm } from "formidable";
-
 import uploadFile from "@/components/uploadFile";
 import GetSingleBookData from "@/components/getSingleBookData";
-
+import uploadFileString from "@/components/uploadFileString";
 const fs = require("fs");
 export const config = {
   api: {
@@ -46,8 +45,9 @@ const post = async (req, res) => {
 async function convertFile(fileUrl, fileName, uid) {
   const data = await GetSingleBookData(fileUrl);
   const newFileName = `${fileName.replace(".pdf", "")}.json`;
-  const fileNameWithPath = `public/${newFileName}`;
-  const epubFile = fs.writeFileSync(fileNameWithPath, JSON.stringify(data));
-  const jsonFile = fs.readFileSync(fileNameWithPath);
-  const pdfUrl = await uploadFile(jsonFile, newFileName, uid, "books");
+  //const fileNameWithPath = `public/${newFileName}`;
+  //const epubFile = fs.writeFileSync(fileNameWithPath, JSON.stringify(data));
+  //const jsonFile = fs.readFileSync(fileNameWithPath);
+  //const pdfUrl = await uploadFile(jsonFile, newFileName, uid);
+  const uploadFileStringData = await uploadFileString(data, newFileName, uid);
 }
