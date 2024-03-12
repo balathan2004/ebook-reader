@@ -1,5 +1,6 @@
-import { inngest } from "@/components/workLoad";
-import GetSingleBookData from "@/build";
+/** 
+ * import { inngest } from "@/components/workLoad";
+import GetSingleBookData from "@/getSingleBookData";
 import fs from "fs";
 import uploadFile from "@/components/uploadFile";
 const ebookConverter = require("node-ebook-converter");
@@ -25,8 +26,9 @@ async function convertFile(fileUrl, fileName, uid) {
   const jsonFile = fs.readFileSync(fileNameWithPath);
   const pdfUrl = await uploadFile(jsonFile, newFileName, uid, "books");
 }
-
-/** 
+ * 
+ * 
+ * 
 import { inngest } from "@/workLoad";
 import { serve } from "inngest/next";
 import { helloWorld } from "@/worker/saveFile";

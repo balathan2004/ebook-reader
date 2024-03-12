@@ -1,7 +1,7 @@
 import { IncomingForm } from "formidable";
-//import { inngest } from "@/workLoad";
+
 import uploadFile from "@/components/uploadFile";
-import GetSingleBookData from "@/build";
+import GetSingleBookData from "@/components/getSingleBookData";
 
 const fs = require("fs");
 export const config = {
@@ -17,7 +17,6 @@ export default async (req, res) => {
 };
 
 const post = async (req, res) => {
-  const pdfJs = await import("pdfjs-dist");
   try {
     const form = new IncomingForm({ multiples: false });
 
@@ -37,15 +36,15 @@ const post = async (req, res) => {
       // fileData.url = url;
       res.json({ message: "success" });
 
-      convertFile(uint8Array, fileData.fileName, fileData.uid, pdfJs);
+      convertFile(uint8Array, fileData.fileName, fileData.uid);
     });
   } catch (err) {
     res.json({ error: err.message });
   }
 };
 
-async function convertFile(fileUrl, fileName, uid, pdfJs) {
-  const data = await GetSingleBookData(fileUrl, pdfJs);
+async function convertFile(fileUrl, fileName, uid) {
+  const data = await GetSingleBookData(fileUrl);
   const newFileName = `${fileName.replace(".pdf", "")}.json`;
   const fileNameWithPath = `public/${newFileName}`;
   const epubFile = fs.writeFileSync(fileNameWithPath, JSON.stringify(data));
