@@ -1,9 +1,7 @@
-import * as pdfjs from "pdfjs-dist/build/pdf.min.mjs";
-await import("pdfjs-dist/build/pdf.worker.min.mjs");
+import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 
 export default async function GetSingleBookData(url) {
-  console.log(url);
-  const values = pdfjs.getDocument(url).promise.then(async (pdfDoc) => {
+  const values = getDocument(url).promise.then(async (pdfDoc) => {
     let textArray = { data: [] };
     const totalPage = pdfDoc.numPages;
 
