@@ -117,7 +117,6 @@ export default function Page() {
           <button onClick={ChangeVoice}>Change Voice</button>
           <button onClick={StartOver}>Cancel</button>
           <button onClick={NextPage}>Next Page</button>
-          <button onClick={gotoPage}>Select Page</button>
         </div>
       </div>
     </>
