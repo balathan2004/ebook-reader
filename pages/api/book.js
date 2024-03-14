@@ -1,7 +1,8 @@
 import { IncomingForm } from "formidable";
-import uploadFile from "@/components/uploadFile";
-import GetSingleBookData from "@/components/getSingleBookData";
+//import uploadFile from "@/components/uploadFile";
 import uploadFileString from "@/components/uploadFileString";
+import * as pdfjs from "pdfjs-dist/build/pdf.min.mjs";
+await import("pdfjs-dist/build/pdf.worker.min.mjs");
 const fs = require("fs");
 export const config = {
   api: {
@@ -51,4 +52,26 @@ async function convertFile(fileUrl, fileName, uid) {
   //const jsonFile = fs.readFileSync(fileNameWithPath);
   //const pdfUrl = await uploadFile(jsonFile, newFileName, uid);
   const uploadFileStringData = await uploadFileString(data, newFileName, uid);
+}
+
+async function GetSingleBookData(url) {
+  const values = pdfjs.getDocument(url).promise.then(async (pdfDoc) => {
+    let textArray = { data: [] };
+    const totalPage = pdfDoc.numPages;
+
+    for (let i = 1; i <= totalPage; i++) {
+      const page = await pdfDoc.getPage(i);
+
+      const textContent = await page.getTextContent();
+      var pageText = "";
+      for (const textItem of textContent.items) {
+        pageText += textItem.str + " ";
+      }
+      textArray.data[i] = pageText;
+    }
+
+    var finalData = { pageData: textArray, totalPage: totalPage };
+    return finalData;
+  });
+  return values;
 }
