@@ -1,10 +1,16 @@
 import { IncomingForm } from "formidable";
 //import uploadFile from "@/components/uploadFile";
 import uploadFileString from "@/components/uploadFileString";
-import * as pdfjs from "pdfjs-dist/build/pdf.min.mjs";
-await import("pdfjs-dist/build/pdf.worker.min.mjs");
+//import * as pdfjs from "pdfjs-dist/build/pdf.min.mjs";
+//await import("pdfjs-dist/build/pdf.worker.min.mjs");
 
-pdfjs.GlobalWorkerOptions.workerSrc = "pdfjs-dist/build/pdf.worker.min.mjs";
+//pdfjs.GlobalWorkerOptions.workerSrc = "pdfjs-dist/build/pdf.worker.min.mjs";
+
+import PDFJS from "pdfjs-dist";
+import PDFJSWorker from "pdfjs-dist/build/pdf.worker.js"; // add this to fit 2.3.0
+
+PDFJS.disableTextLayer = true;
+PDFJS.disableWorker = true;
 
 const fs = require("fs");
 export const config = {
@@ -58,7 +64,7 @@ async function convertFile(fileUrl, fileName, uid) {
 }
 
 async function GetSingleBookData(url) {
-  const values = pdfjs.getDocument(url).promise.then(async (pdfDoc) => {
+  const values = PDFJS.getDocument(url).promise.then(async (pdfDoc) => {
     let textArray = { data: [] };
     const totalPage = pdfDoc.numPages;
 
