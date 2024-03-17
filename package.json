@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "now-build": "node build.js",
     "dev": "next dev",
     "solo": "concurrently \"npx inngest-cli@latest dev\" \"next dev\"",
     "build": "next build",
