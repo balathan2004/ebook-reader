@@ -4,8 +4,6 @@ import uploadFileString from "@/components/uploadFileString";
 import * as pdfjs from "pdfjs-dist/legacy/build/pdf.min.mjs";
 //await import("pdfjs-dist/build/pdf.worker.min.mjs");
 
-pdfjs.GlobalWorkerOptions.workerSrc = "pdfjs-dist/build/pdf.worker.min.mjs";
-
 const fs = require("fs");
 export const config = {
   api: {
