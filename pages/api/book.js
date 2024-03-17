@@ -1,8 +1,8 @@
 import { IncomingForm } from "formidable";
 //import uploadFile from "@/components/uploadFile";
 import uploadFileString from "@/components/uploadFileString";
-import * as pdfjs from "pdfjs-dist/build/pdf.min.mjs";
-await import("pdfjs-dist/build/pdf.worker.min.mjs");
+import * as pdfjs from "pdfjs-dist/legacy/build/pdf.min.mjs";
+//await import("pdfjs-dist/build/pdf.worker.min.mjs");
 
 pdfjs.GlobalWorkerOptions.workerSrc = "pdfjs-dist/build/pdf.worker.min.mjs";
 
