@@ -45,7 +45,7 @@ export default function Home() {
   }
 
   return (
-    <div className="app">
+    <div className="index_page">
       <ErrorComponent
         ErrorState={error}
         StateChanger={setError}

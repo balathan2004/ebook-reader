@@ -56,10 +56,6 @@ const post = async (req, res) => {
 async function convertFile(fileUrl, fileName, uid) {
   const data = await GetSingleBookData(fileUrl);
   const newFileName = `${fileName.replace(".pdf", "")}.json`;
-  //const fileNameWithPath = `public/${newFileName}`;
-  //const epubFile = fs.writeFileSync(fileNameWithPath, JSON.stringify(data));
-  //const jsonFile = fs.readFileSync(fileNameWithPath);
-  //const pdfUrl = await uploadFile(jsonFile, newFileName, uid);
   const uploadFileStringData = await uploadFileString(data, newFileName, uid);
 }
 
