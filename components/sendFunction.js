@@ -2,7 +2,7 @@ export default async function SendData(data, route) {
   console.log(data);
   try {
     var response = await fetch(`/api/${route}`, {
-      body: data,
+      body: JSON.stringify(data),
       method: "POST",
       contentType: "application/json",
     });

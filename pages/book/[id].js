@@ -117,6 +117,9 @@ export default function Page() {
           <button onClick={ChangeVoice}>Change Voice</button>
           <button onClick={StartOver}>Cancel</button>
           <button onClick={NextPage}>Next Page</button>
+          <button>
+            <a href={`/download?book=${id}`}> Download Audio book</a>{" "}
+          </button>
         </div>
       </div>
     </>
