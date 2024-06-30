@@ -41,7 +41,8 @@
     "react-dom": "18.2.0",
     "react-speech": "^1.0.2",
     "responsivevoice": "^0.4.1",
-    "web-streams-polyfill": "^4.0.0"
+    "web-streams-polyfill": "^4.0.0",
+    "whisper-node": "^1.1.1"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
