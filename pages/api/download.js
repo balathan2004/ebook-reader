@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const ElevenLabs = require("elevenlabs");
 const gTTS = require("gtts");
+const espeak = require("espeak");
 
 import { storage } from "@/components/config";
 import { ref, getDownloadURL } from "firebase/storage";
@@ -17,7 +18,7 @@ export default async (req, res) => {
 
         const bookData = await getBook(EBookUserId, bookName);
 
-        const audioOutput = await gttsProcessing(bookData, bookName);
+        const audioOutput = await espeakProcess(bookData, bookName);
       } catch (err) {
         console.log(err);
       }
@@ -59,6 +60,11 @@ async function getBook(username, url) {
   var bookData = await accVal.json();
   const text = bookData.pageData.data;
   return text;
+}
+
+async function espeakProcess(bookData, bookName) {
+  const edittedName = bookName.replace(".json", "").trim();
+  const stringBook = JSON.stringify(bookData.join(" "));
 }
 
 async function gttsProcessing(bookData, bookName) {
