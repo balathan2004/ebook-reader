@@ -4,9 +4,10 @@ import { ref, deleteObject } from "firebase/storage";
 
 export default async (req, res) => {
   var uid = req.cookies.EBookUserId;
-  var filename = req.body;
+  var { bookName } = JSON.parse(req.body);
+  console.log(bookName);
 
-  const fileRef = ref(storage, `books/${uid}/${filename}`);
+  const fileRef = ref(storage, `books/${uid}/${bookName}`);
   await deleteObject(fileRef)
     .then(console.log)
     .catch((err) => {

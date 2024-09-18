@@ -1,10 +1,10 @@
 import { storage } from "@/components/config";
 import { ref, getDownloadURL } from "firebase/storage";
 export default async (req, res) => {
-  console.log("requested");
   try {
     const { EBookUserId } = req.cookies;
     const { url, pageNum } = JSON.parse(req.body);
+    console.log("requested for", url, pageNum);
     const file = ref(storage, `/books/${EBookUserId}/${url}`);
     var urlpath = await getDownloadURL(file);
     var accVal = await fetch(urlpath, { contentType: "application/json" });

@@ -21,7 +21,6 @@ export const config = {
 
 export default async (req, res) => {
   if (req.method == "POST") {
-    console.clear();
     post(req, res);
   }
 };
@@ -64,18 +63,23 @@ async function GetSingleBookData(url) {
     let textArray = { data: [] };
     const totalPage = pdfDoc.numPages;
 
+    let counter = 0;
+
     for (let i = 1; i <= totalPage; i++) {
       const page = await pdfDoc.getPage(i);
 
       const textContent = await page.getTextContent();
       var pageText = "";
       for (const textItem of textContent.items) {
-        pageText += textItem.str + " ";
+        pageText += textItem.str.replace(/ {2,}/g, " ") + " ";
       }
-      textArray.data[i] = pageText;
+      if (pageText != null && pageText.length > 0) {
+        textArray.data[counter] = pageText;
+        counter++;
+      }
     }
 
-    var finalData = { pageData: textArray, totalPage: totalPage };
+    var finalData = { pageData: textArray, totalPage: counter };
     return finalData;
   });
   return values;

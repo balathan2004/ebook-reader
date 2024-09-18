@@ -45,9 +45,9 @@ padding-bottom: 20px;
   color: white;
   z-index: 1;
   top: 25%;
-  left: 5vh;
-  width: 90vw;
-  height: 200px;
+  left: 35%;
+  width: 500px;
+  height: 150px;
   background-color: rgba(74, 73, 73, 0.5); /* Transparent background */
   backdrop-filter: blur(3px); /* Apply blur effect */
   justify-content: center;
@@ -61,21 +61,17 @@ padding-bottom: 20px;
 }
 
 .error_head {
- 
   display: block;
   float: right;
   margin: 1rem;
-  
-  
-  
 }
 
 .error_content{
-  height: 80%;
   width: 100%;
   display: flex;
 align-items: center;
 justify-content: center;
+line-height: 50px;
   
   
 }

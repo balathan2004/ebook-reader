@@ -10,7 +10,7 @@ export default function SignUp({ navigator, ErrorChanger }) {
   async function submit(event) {
     event.preventDefault();
     if (email != "" && password != "") {
-      var data = JSON.stringify({ email: email, password: password });
+      var data = { email: email, password: password };
 
       var res = await SendData(data, "signup");
 

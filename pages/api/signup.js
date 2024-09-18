@@ -8,7 +8,9 @@ export default async (req, res) => {
   let uid = "";
 
   const { email, password } = JSON.parse(req.body);
-  console.log(email, password);
+  const parsed = JSON.parse(req.body);
+  console.log(parsed);
+
   try {
     await createUserWithEmailAndPassword(auth, email, password).then(
       (userCred) => {

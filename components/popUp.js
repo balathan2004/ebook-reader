@@ -13,9 +13,7 @@ export async function PopupMethods() {
         userId: x.user.uid,
       };
 
-      var jsonData = JSON.stringify(data);
-
-      var res = await SendData(jsonData, "googleLogin");
+      var res = await SendData(data, "googleLogin");
       console.log(res);
       var responseJson = await res;
       if (responseJson.message != "") {

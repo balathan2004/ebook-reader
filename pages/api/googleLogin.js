@@ -4,6 +4,7 @@ import { setCookie } from "cookies-next";
 
 export default async (req, res) => {
   var data = JSON.parse(req.body);
+  console.log(JSON.stringify(data));
   var { userId } = data;
   console.log(userId);
 
@@ -32,6 +33,7 @@ export default async (req, res) => {
     }
     res.json({ message: "Login Successful" });
   } catch (err) {
+    console.log(err);
     res.json({ error: "Error Caught" });
   }
 };

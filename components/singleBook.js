@@ -11,7 +11,7 @@ export default function SingleBook({ data, bookName, bookFunction }) {
       "Do You want to remove" + data + "\n Yes or No"
     ).toLowerCase();
     if (prom == "yes" || prom == "y") {
-      var res = await SendData(data, "delete_book");
+      var res = await SendData({ bookName: data }, "delete_book");
       console.log(res);
       bookFunction(bookName.filter((name) => name !== data));
     }

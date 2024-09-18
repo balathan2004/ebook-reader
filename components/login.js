@@ -10,7 +10,7 @@ export default function Login({ func, navigator, ErrorChanger }) {
 
   async function submit() {
     if (username != "" && password != "") {
-      var data = JSON.stringify({ username: username, password: password });
+      var data = { username: username, password: password };
       var res = await SendData(data, "login");
       if (res.message == "success") {
         setTimeout(() => {

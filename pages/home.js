@@ -3,7 +3,6 @@ import SingleBook from "@/components/singleBook";
 import { useRouter } from "next/router";
 import ErrorComponent from "@/components/error";
 import styles from "@/styles/Home.module.css";
-import Navbar from "@/components/nav";
 
 export default function Home({ data }) {
   const navigator = useRouter();
@@ -12,8 +11,8 @@ export default function Home({ data }) {
 
   if (error) {
     setTimeout(() => {
-      navigator.push("/upload-book");
-    }, 5000);
+      // navigator.push("/upload-book");
+    }, 3000);
   }
 
   return (

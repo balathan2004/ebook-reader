@@ -1,19 +1,9 @@
 const fs = require("fs");
-const espeak = require("espeak");
+import speak from "offline-tts";
 
 export default function (req, res) {
-  speak("Hello, this is an offline text to speech example.");
+  speak("hello world");
   res.json({ message: "Hello, this is an offline text to speech example " });
-}
-
-function speak(text) {
-  espeak.speak(text, (err) => {
-    if (err) {
-      console.error(`Error: ${err.message}`);
-    } else {
-      console.log("Text spoken successfully.");
-    }
-  });
 }
 
 // Example usage

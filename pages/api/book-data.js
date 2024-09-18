@@ -25,7 +25,9 @@ export default async (req, res) => {
 
       res.json({ message: bookNames });
     } else {
-      res.status(200).send({ error: "You Dont have any books" });
+      res
+        .status(200)
+        .send({ error: "You Dont have any books navigating to home page" });
     }
   } else {
     res.status(200).send({ error: "No Uid found" });

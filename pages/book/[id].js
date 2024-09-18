@@ -15,7 +15,7 @@ import LoadingComponent from "@/components/loadingComponent";
 export default function Page() {
   const router = useRouter();
 
-  const [pageNum, setPageNum] = useState(1);
+  const [pageNum, setPageNum] = useState(0);
   const [loader, setLoader] = useState(true);
   const [pageData, setPageData] = useState(null);
   const [VoiceNum, setVoiceNum] = useState(0);
@@ -43,6 +43,7 @@ export default function Page() {
         pageNum: pageNum,
         url: id,
       };
+      console.log("requested with ", dataNeed);
       try {
         const res = await fetch("/api/single_page", {
           method: "POST",
@@ -70,7 +71,7 @@ export default function Page() {
   function NextPage() {
     setNotification("Moving to next page");
     setLoader(true);
-    setPageNum(pageNum + 1);
+    setPageNum((prev) => prev + 1);
     setPages(pageNum + 1);
   }
 
