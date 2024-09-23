@@ -11,7 +11,7 @@ export default function Home({ data }) {
 
   if (error) {
     setTimeout(() => {
-      // navigator.push("/upload-book");
+       navigator.push("/upload-book");
     }, 3000);
   }
 

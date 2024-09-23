@@ -1,16 +1,11 @@
 import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useRef} from "react";
 import styles from "@/styles/Home.module.css";
 import Navbar from "@/components/nav";
 import Notify from "@/components/notify";
-import {
-  StartSpeech,
-  StopSpeech,
-  ResumeSpeech,
-  GetVoicesSpeech,
-  StartOver,
-} from "@/components/speechs";
+
 import LoadingComponent from "@/components/loadingComponent";
+
 
 export default function Page() {
   const router = useRouter();
@@ -21,6 +16,8 @@ export default function Page() {
   const [VoiceNum, setVoiceNum] = useState(0);
   const [notification, setNotification] = useState(null);
   const [totalPage, setTotalPage] = useState(null);
+  const [audioUrl,setAudioUrl]=useState("")
+  const audioRef=useRef(null)
 
   const { id } = router.query;
 
@@ -57,6 +54,7 @@ export default function Page() {
           console.log(data);
           setPageData(data.page);
           setTotalPage(data.totalPages);
+          setPageNum((prev) => prev + 1 - 1);
           if (pageNum == data.totalPages) {
             alert("You Finished The Book");
           }
@@ -66,6 +64,10 @@ export default function Page() {
       }
     }
     setLoader(false);
+  }
+
+  function checker() {
+    console.log(window.responsiveVoice.getVoices());
   }
 
   function NextPage() {
@@ -93,6 +95,45 @@ export default function Page() {
     fetchData();
   }, [pageNum]);
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (pageData) {
+      reqAudio(pageData);
+    }
+  }, [pageData]);
+  useEffect(() => {
+    if (audioUrl && audioRef.current) {
+      audioRef.current.src = audioUrl; // Set the audio source
+    }
+  }, [audioUrl]);
+
+  const reqAudio = async (pageData) => {
+    const response = await fetch("/api/request_voice", {
+      body: JSON.stringify({ text: pageData }),
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      console.log("error conversion");
+    } else {
+      console.log("audio got");
+      const audioBlob = await response.blob();
+      const audioUrl = URL.createObjectURL(audioBlob);
+      setAudioUrl(audioUrl)
+   
+      
+    }
+  };
+
+
+
   return (
     <>
       <Notify message={notification} messageFunction={setNotification} />
@@ -109,18 +150,20 @@ export default function Page() {
             ? "Current Page is Empty ! Swipe To Next Page"
             : pageData}
         </p>
+        <audio ref={audioRef} controls>
+            <p>Your browser does not support the audio element.</p>
+          </audio>
         <div className={styles.btn_container}>
-          <button onClick={() => StartSpeech(pageData, VoiceNum)}>
-            Speak Now
-          </button>
-          <button onClick={StopSpeech}>Pause</button>
-          <button onClick={ResumeSpeech}>Resume</button>
-          <button onClick={ChangeVoice}>Change Voice</button>
-          <button onClick={StartOver}>Cancel</button>
+          <button onClick={() => StartSpeech(pageData)}>Speak Now</button>
+          <button>Pause</button>
+          <button>Resume</button>
+          <button>Change Voice</button>
+          <button>Cancel</button>
           <button onClick={NextPage}>Next Page</button>
           <button>
             <a href={`/download?book=${id}`}> Download Audio book</a>{" "}
           </button>
+          <button onClick={checker}>check</button>
         </div>
       </div>
     </>
