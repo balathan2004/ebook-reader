@@ -69,7 +69,7 @@ export async function getServerSideProps(context) {
 
     const apiUrl =
       process.env.NODE_ENV === "production"
-        ? `${HOSTING_URL}/api/get_book_names?id=${uid}`
+        ? `${process.env.HOSTING_URL}/api/get_book_names?id=${uid}`
         : `http://localhost:3000/api/get_book_names?id=${uid}`;
 
         console.log(apiUrl)
