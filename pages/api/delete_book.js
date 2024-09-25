@@ -7,7 +7,7 @@ export default async (req, res) => {
   var { bookName } = JSON.parse(req.body);
   console.log(bookName);
 
-  const fileRef = ref(storage, `books/${uid}/${bookName}`);
+  const fileRef = ref(storage, `${uid}/books/${bookName}`);
   await deleteObject(fileRef)
     .then(console.log)
     .catch((err) => {

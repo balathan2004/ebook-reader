@@ -15,7 +15,7 @@ export default function Home() {
   var navigate = useRouter();
   const [options, setOptions] = useState(false);
   const [error, setError] = useState(false);
-  const [loader, setLoader] = useState(true);
+  //const [loader, setLoader] = useState(true);
   async function checkCookie() {
     console.log("cookie",getCookie("EBookUserId"))
     if (getCookie("EBookUserId")) {
@@ -34,17 +34,10 @@ export default function Home() {
   }
 
   useEffect(() => {
-    console.log("useeffed")
-    checkCookie();
+
   }, []);
 
-  if (loader) {
-    return (
-      <div className="app">
-        <LoadingComponent />
-      </div>
-    );
-  }
+ 
 
   return (
     <div className="index_page">

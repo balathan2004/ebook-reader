@@ -5,15 +5,32 @@ import ErrorComponent from "@/components/error";
 import styles from "@/styles/Home.module.css";
 
 export default function Home({ data }) {
+  console.log(data)
   const navigator = useRouter();
-  const error = data.error ? data.error : "";
+  const [error,setError] = useState(data.error ? data.error :null)
   const [books, setBooks] = useState(data.message ? data.message : []);
 
-  if (error) {
-    setTimeout(() => {
-       navigator.push("/upload-book");
-    }, 3000);
-  }
+ 
+
+  useEffect(()=>{
+
+    if(books.length==0){
+     setError(true)
+    }
+
+  },[books])
+
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => {
+        navigator.push("/upload-book");
+      }, 3000);
+      
+      // Clean up the timer on unmount
+      return () => clearTimeout(timer);
+    }
+  }, [error, navigator]);
+
 
   return (
     <>
@@ -52,14 +69,17 @@ export async function getServerSideProps(context) {
 
     const apiUrl =
       process.env.NODE_ENV === "production"
-        ? `https://nextjs-read.vercel.app/api/book-data?id=${uid}`
-        : `http:localhost:3000/api/book-data?id=${uid}`;
+        ? `https://nextjs-read.vercel.app/api/get_book_names?id=${uid}`
+        : `http://localhost:3000/api/get_book_names?id=${uid}`;
+
+        console.log(apiUrl)
 
     const response = await fetch(apiUrl, {
       method: "GET",
       contentType: "application/json",
     });
     const responseJson = await response.json();
+    console.log(responseJson)
 
     return {
       props: {
@@ -67,6 +87,7 @@ export async function getServerSideProps(context) {
       },
     };
   } catch (err) {
+    console.log(err)
     return {
       props: {
         data: { error: "static props error" },

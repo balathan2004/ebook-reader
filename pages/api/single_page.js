@@ -8,7 +8,7 @@ export default async (req, res) => {
     const { EBookUserId } = req.cookies;
     const { url, pageNum } = JSON.parse(req.body);
     console.log("requested for", url, pageNum);
-    const file = ref(storage, `/books/${EBookUserId}/${url}`);
+    const file = ref(storage, `/${EBookUserId}/books/${url}`);
     var urlpath = await getDownloadURL(file);
     var accVal = await fetch(urlpath, { contentType: "application/json" });
     var bookData = await accVal.json();
