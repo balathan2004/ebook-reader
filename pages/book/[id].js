@@ -142,7 +142,7 @@ export default function Page() {
         <div className={styles.contentDetails}>
           <h1>{id}</h1>
           <span>
-            Current Page {pageNum + 1}/{totalPage}
+            {totalPage?`Current Page ${pageNum + 1}/${totalPage}`:null}
           </span>
         </div>
         <p className={styles.para}>
