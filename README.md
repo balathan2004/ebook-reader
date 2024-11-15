@@ -1,38 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PDF to Voice Converter - README  
 
-## Getting Started
+Live Hosting Link - https://ebook-reader-beta.vercel.app/
 
-First, run the development server:
+## Overview  
+The **PDF to Voice Converter** is a web application designed to transform PDF documents into audio files, making them accessible to a wider audience. This tool extracts text from uploaded PDFs, converts it into speech using advanced text-to-speech technology, and provides a downloadable audio file for offline use.  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Purpose  
+This project aims to:  
+1. **Enhance Accessibility**: Enable users with visual impairments or reading difficulties to access PDF content through audio.  
+2. **Improve Convenience**: Allow users to listen to PDFs while multitasking or on the go.  
+3. **Promote Efficiency**: Quickly convert lengthy documents into easily digestible audio formats.  
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+---
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Features  
+- **PDF Upload**: Supports PDF file uploads for text extraction.  
+- **Text-to-Speech Conversion**: Converts extracted text into clear and natural-sounding audio.  
+- **Downloadable MP3**: Provides an option to download the generated audio file.  
+- **Responsive Design**: Works seamlessly across desktop and mobile devices.  
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Technologies Used  
+- **Frontend**:  
+  - React.js
 
-## Learn More
+- **Backend**:  
+  - Next.js with API routes for processing uploads  
 
-To learn more about Next.js, take a look at the following resources:
+- **Text-to-Speech Engine**:  
+  - gTTS (Google Text-to-Speech)  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **File Handling**:  
+  - `formidable` for parsing uploaded PDF files  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## How It Works  
+1. **Upload a PDF**: Users upload a PDF file via the web interface.  
+2. **Extract Text**: The app extracts readable text from the PDF.  
+3. **Convert to Audio**: The extracted text is processed using a text-to-speech engine to generate audio.  
+4. **Download or Play**: The generated audio file is available for download or online playback.  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Use Cases  
+- Listening to study materials or reports on the go.  
+- Making content accessible for visually impaired users.  
+- Consuming lengthy PDF documents more efficiently.  
+
+---
+
+Thank you for exploring the PDF to Voice Converter! If you have any suggestions or feedback, feel free to reach out. 😊
